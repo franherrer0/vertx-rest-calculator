@@ -23,6 +23,7 @@ public class CalcHandler {
     		double dop2 = Double.valueOf(op2);
     		CalcOutputData output = calcServiceWrapper.add(new CalcInputData(dop1,"+",dop2));
     		onSuccessResponse(rc, 200, output);
+    		System.out.println(output);
     	}catch(Exception e) {
     		onErrorResponse(rc, 400, e);
     	}
@@ -37,6 +38,7 @@ public class CalcHandler {
 
     		CalcOutputData output = calcServiceWrapper.subtract(new CalcInputData(dop1,"-",dop2));
     		onSuccessResponse(rc, 200, output);
+    		System.out.println(output);
     	}catch(Exception e) {
     		onErrorResponse(rc, 400, e);
     	}
@@ -52,6 +54,7 @@ public class CalcHandler {
 
     		CalcOutputData output = calcServiceWrapper.calc(new CalcInputData(dop1,operator,dop2));
     		onSuccessResponse(rc, 200, output);
+    		System.out.println(output);
     	}catch(Exception e) {
     		onErrorResponse(rc, 400, e);
     	}

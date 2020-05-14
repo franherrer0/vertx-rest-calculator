@@ -9,9 +9,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
 
 import es.fran.vertx.calculator.verticle.MainVerticle;
 
-import java.util.concurrent.TimeUnit;
-
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @ExtendWith(VertxExtension.class)
 public class TestMainVerticle {

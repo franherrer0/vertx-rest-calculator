@@ -25,7 +25,7 @@ public class MainVerticle extends AbstractVerticle {
     			.setType("file")
     			.setFormat("json")
     			.setConfig(new JsonObject().put("path", "conf/config.json"));
-    	options = options.addStore(envJson);        
+    	options = options.addStore(envJson);
         
         final ConfigRetriever retriever = ConfigRetriever.create(vertx, options);
 
@@ -50,7 +50,10 @@ public class MainVerticle extends AbstractVerticle {
         return vertx
                 .createHttpServer()
                 .requestHandler(router)
-                .rxListen(configurations.getInteger("HTTP_PORT"));
+                .rxListen(config().getInteger("HTTP_PORT_TEST")!=null?
+                		config().getInteger("HTTP_PORT_TEST"):
+                		configurations.getInteger("HTTP_PORT"));
+       
     }
 
 }
