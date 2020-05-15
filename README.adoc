@@ -28,4 +28,24 @@ To run your application:
 * https://groups.google.com/forum/?fromgroups#!forum/vertx[Vert.x User Group]
 * https://gitter.im/eclipse-vertx/vertx-users[Vert.x Gitter]
 
+ab -n 10000 -c 10 http://localhost:8081/v1/calc/add/1.83/2
 
+```
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.5      0       2
+Processing:     1   15  10.3     14     130
+Waiting:        1   15  10.3     14     130
+Total:          1   16  10.3     14     131
+
+Percentage of the requests served within a certain time (ms)
+  50%     14
+  66%     17
+  75%     20
+  80%     21
+  90%     26
+  95%     31
+  98%     41
+  99%     55
+ 100%    131 (longest request)
+```
