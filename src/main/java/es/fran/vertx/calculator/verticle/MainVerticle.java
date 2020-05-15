@@ -12,8 +12,9 @@ import io.vertx.reactivex.config.ConfigRetriever;
 import io.vertx.reactivex.core.AbstractVerticle;
 import io.vertx.reactivex.core.http.HttpServer;
 import io.vertx.reactivex.ext.web.Router;
+import lombok.extern.slf4j.Slf4j;
 
-
+@Slf4j
 public class MainVerticle extends AbstractVerticle {
 
     @Override
@@ -39,9 +40,9 @@ public class MainVerticle extends AbstractVerticle {
                     return createHttpServer(calcRouter.getRouter(), configurations);
                 })
                 .subscribe(
-                        server -> System.out.println("HTTP Server listening on port " + server.actualPort()),
+                        server -> log.debug("HTTP Server listening on port " + server.actualPort()),
                         throwable -> {
-                            System.out.println("Error occurred before creating a new HTTP server: " + throwable.getMessage());
+                        	log.error("Error occurred before creating a new HTTP server: " + throwable.getMessage());
                             System.exit(1);
                         });
     }

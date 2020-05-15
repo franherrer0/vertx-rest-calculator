@@ -3,10 +3,12 @@ package es.fran.vertx.calculator.handler.v1;
 import io.vertx.core.json.Json;
 import io.vertx.core.json.JsonObject;
 import io.vertx.reactivex.ext.web.RoutingContext;
+import lombok.extern.slf4j.Slf4j;
 import es.fran.vertx.calculator.model.v1.CalcInputData;
 import es.fran.vertx.calculator.model.v1.CalcOutputData;
 import es.fran.vertx.calculator.service.v1.CalcServiceWrapper;
 
+@Slf4j
 public class CalcHandler {
 
     private CalcServiceWrapper calcServiceWrapper;
@@ -23,7 +25,7 @@ public class CalcHandler {
     		double dop2 = Double.valueOf(op2);
     		CalcOutputData output = calcServiceWrapper.add(new CalcInputData(dop1,"+",dop2));
     		onSuccessResponse(rc, 200, output);
-    		System.out.println(output);
+    		log.debug(output.toString());
     	}catch(Exception e) {
     		onErrorResponse(rc, 400, e);
     	}
@@ -38,7 +40,7 @@ public class CalcHandler {
 
     		CalcOutputData output = calcServiceWrapper.subtract(new CalcInputData(dop1,"-",dop2));
     		onSuccessResponse(rc, 200, output);
-    		System.out.println(output);
+    		log.debug(output.toString());
     	}catch(Exception e) {
     		onErrorResponse(rc, 400, e);
     	}
@@ -46,7 +48,7 @@ public class CalcHandler {
     
     public void calc(RoutingContext rc) {
     	JsonObject json = rc.getBodyAsJson();
-        System.out.println(json);
+    	log.debug(json.toString());
     	try {
     		double dop1 = json.getDouble("op1");
     		double dop2 = json.getDouble("op2");
@@ -54,7 +56,7 @@ public class CalcHandler {
 
     		CalcOutputData output = calcServiceWrapper.calc(new CalcInputData(dop1,operator,dop2));
     		onSuccessResponse(rc, 200, output);
-    		System.out.println(output);
+    		log.debug(output.toString());
     	}catch(Exception e) {
     		onErrorResponse(rc, 400, e);
     	}

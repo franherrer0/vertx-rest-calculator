@@ -34,7 +34,6 @@ public class TestIntegrationMainVerticle {
 	@BeforeAll
 	void deploy_verticle(Vertx vertx, VertxTestContext testContext) throws IOException {
 
-		
 		ServerSocket socket = new ServerSocket(0);
 		port = socket.getLocalPort();
 		System.out.println("Port:" + port);
